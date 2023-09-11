@@ -18,7 +18,6 @@ const Minus = createToken({
     categories: AdditionOperator
 });
 
-
 // tokens for multiply(*) and divide(/)
 const MultiplicationOperator = createToken({
     name: "MultiplicationOperator",
@@ -36,7 +35,6 @@ const Divide = createToken({
     pattern: /\//,
     categories: MultiplicationOperator
 })
-
 
 // tokens for parens
 const LeftParen = createToken({
@@ -73,7 +71,6 @@ const WhiteSpace = createToken({
     group: Lexer.SKIPPED
 });
 
-
 // specifies the order in which an input will be matched against all defined tokens
 const tokens = [
     WhiteSpace,
@@ -90,11 +87,4 @@ const tokens = [
     Comma
 ];
 
-
-// creating a lexer, which given an input, will returned the tokens present in it
-const lexer = new Lexer(tokens);
-
-export {
-    tokens,
-    lexer
-}
+export default tokens;
