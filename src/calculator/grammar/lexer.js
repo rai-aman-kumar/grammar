@@ -38,3 +38,37 @@ const Divide = createToken({
 })
 
 
+// tokens for parens
+const LeftParen = createToken({
+    name: "LeftParen",
+    pattern: /\(/
+});
+
+const RightParen = createToken({
+    name: "RightParen",
+    pattern: /\)/
+});
+
+// Tokens for different types of literals
+const NumberLiteral = createToken({
+    name: "NumberLiteral",
+    pattern: /[1-9]\d*/
+});
+
+// other tokens
+const PowerFn = createToken({
+    name: "PowerFn",
+    pattern: /power/
+});
+
+const Comma = createToken({
+    name: "Comma",
+    pattern: /,/
+});
+
+// whitespace token
+const WhiteSpace = createToken({
+    name: "WhiteSpace",
+    pattern: /\s+/,
+    group: Lexer.SKIPPED
+});
