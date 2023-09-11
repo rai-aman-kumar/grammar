@@ -10,20 +10,40 @@ class Parser extends CstParser {
 
         // parsing rule for base expression
         $.RULE("expression", () => {
-            $.SUBRULE($.additionExpression)
-        })
+            $.SUBRULE($.additionExpression);
+        });
 
         // parsing rule for addition expression
         $.RULE("additionExpression", () => {
             $.SUBRULE($.multiplicationExpression, { label: "lhs"});
 
-            // additionExpression consumes AdditionOperator which is a group made of Plus and Minus
-            // so these are the only 2 tokens this rule will consume
+            // consumes AdditionOperator group, i.e. Plus and Minus tokens
             $.MANY(() => {
                 $.CONSUME(tokens.AdditionOperator);
                 $.SUBRULE2($.multiplicationExpression, { label: "rhs"});
             })
 
+        });
+
+        // parsing rule for multiplication expression
+        $.RULE("multiplicationExpression", () => {
+            $.SUBRULE($.atomicExpression, { label: "lhs"});
+
+            // consumes MultiplicationOperator group, i.e. Multiply and Divide tokens
+            $.MANY(() => {
+                $.CONSUME(tokens.MultiplicationOperator);
+                $.SUBRULE2($.atomicExpression, { label: "rhs"});
+            });
+        });
+
+
+        // parsing rule for atomic expression
+        $.RULE("atomicExpression", () => {
+            $.OR([
+                {ALT: () => $.SUBRULE($.parenthesisExpression)},
+                {ALT: () => $.CONSUME(tokens.NumberLiteral)},
+                {ALT: () => $.SUBRULE($.powerFnExpression)}
+            ])
         })
 
     }
