@@ -72,3 +72,20 @@ const WhiteSpace = createToken({
     pattern: /\s+/,
     group: Lexer.SKIPPED
 });
+
+
+// specifies the order in which an input will be matched against all defined tokens
+const tokensInOrder = [
+    WhiteSpace,
+    Plus,
+    Minus,
+    Multiply,
+    Divide,
+    LeftParen,
+    RightParen,
+    NumberLiteral,
+    AdditionOperator,
+    MultiplicationOperator,
+    PowerFn,
+    Comma
+]
