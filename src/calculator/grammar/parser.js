@@ -67,5 +67,6 @@ class Parser extends CstParser {
         this.performSelfAnalysis();
     }
 }
+
 export default Parser;
 
