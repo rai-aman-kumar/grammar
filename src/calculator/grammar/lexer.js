@@ -75,7 +75,7 @@ const WhiteSpace = createToken({
 
 
 // specifies the order in which an input will be matched against all defined tokens
-const tokensInOrder = [
+const tokens = [
     WhiteSpace,
     Plus,
     Minus,
@@ -88,4 +88,13 @@ const tokensInOrder = [
     MultiplicationOperator,
     PowerFn,
     Comma
-]
+];
+
+
+// creating a lexer, which given an input, will returned the tokens present in it
+const lexer = new Lexer(tokens);
+
+export {
+    tokens,
+    lexer
+}
