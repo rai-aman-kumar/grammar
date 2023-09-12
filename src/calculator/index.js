@@ -3,7 +3,6 @@ import tokens from "./grammar/tokens";
 import Parser from "./grammar/parser";
 import Interpreter from "./grammar/interpreter";
 
-
 const processText = (text) => {
 
     // creating lexer instance and tokenizing input
